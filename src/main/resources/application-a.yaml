@@ -1,0 +1,11 @@
+server:
+  port: 8081
+
+spring:
+  security:
+    oauth2:
+      #this is using oauth2ResourceServer { jwt {  } }
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/landonline
+#          jwk-set-uri: http://localhost:8080/realms/landonline/protocol/openid-connect/certs

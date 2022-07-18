@@ -1,37 +1,18 @@
-spring:
-  security:
-    oauth2:
-#this is using oauth2ResourceServer { jwt {  } }
-      resourceserver:
-        jwt:
-          jwk-set-uri: http://localhost:8080/realms/landonline/protocol/openid-connect/certs
-#          issuer-uri: http://localhost:8080/realms/landonline
-
----
-
-server:
-  port: 8081
-
-spring:
-  config:
-    activate:
-      on-profile: "a"
-
----
-
 server:
   port: 8082
 
 spring:
-  config:
-    activate:
-      on-profile: "b"
-
   security:
     oauth2:
+      #this is using oauth2ResourceServer { jwt {  } }
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/landonline
+#          jwk-set-uri: http://localhost:8080/realms/landonline/protocol/openid-connect/certs
+
       client:
         registration:
-          search-service-a:
+          search-service-b:
             provider: keycloak
             client-id: search-service-b
             client-secret: another_secret
@@ -42,4 +23,3 @@ spring:
 #            authorization-uri: http://localhost:8080/realms/landonline/protocol/openid-connect/auth
 #            token-uri: http://localhost:8080/realms/landonline/protocol/openid-connect/token
 #            user-info-uri: http://localhost:8080/realms/landonline/protocol/openid-connect/userinfo
-
